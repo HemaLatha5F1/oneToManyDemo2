@@ -33,24 +33,25 @@ public class Controller {
 		return investmentRepository.findByCustomerId(id);
 	}
 	
-//	@PutMapping("/updateInvestment/{id}")
-//	public List<Investment> updateInvestments(@PathVariable Integer id) {
-//		List<Investment> findByCustomerId = investmentRepository.findByCustomerId(id);
-//		Investment investment = findByCustomerId.get(1);
-//		investment.setType("Equity");
-//		return findByCustomerId;
-//		
-//	}
+	/*
+	 * @PutMapping("/updateInvestment/{id}") public List<Investment>
+	 * updateInvestments(@PathVariable Integer id) { List<Investment>
+	 * findByCustomerId = investmentRepository.findByCustomerId(id); Investment
+	 * investment = findByCustomerId.get(1); investment.setType("Equity"); return
+	 * findByCustomerId;
+	 * 
+	 * }
+	 */
 	
 	@PutMapping("/updateInvestment/{id}/{cid}")
 	public Investment updateInvestments(@PathVariable Integer id, @PathVariable Integer cid) {
-//		Optional<Investment> findByIdAndCustomerId = investmentRepository.findByIdAndCustomerId(id, cid);
-//		Investment newInvestment = null;
-//		if(findByIdAndCustomerId.isPresent()) {
-//			newInvestment = findByIdAndCustomerId.get();
-//		}
-//		newInvestment.setType("Equity");
-//		return investmentRepository.save(newInvestment);
+		/*
+		 * Optional<Investment> findByIdAndCustomerId =
+		 * investmentRepository.findByIdAndCustomerId(id, cid); Investment newInvestment
+		 * = null; if(findByIdAndCustomerId.isPresent()) { newInvestment =
+		 * findByIdAndCustomerId.get(); } newInvestment.setType("Equity"); return
+		 * investmentRepository.save(newInvestment);
+		 */
 		
 		Investment investment = investmentRepository.findByIdAndCustomerId(id, cid).get();
 		Optional.ofNullable(investment).ifPresent(invest -> invest.setType("Equity"));
