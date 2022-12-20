@@ -8,10 +8,11 @@ import lombok.Data;
 @Entity
 @Data
 @Table
-public class Manager {
-
+public class Model {
+	
 	@Id
-	private Integer mid;
-	private String mname;
+	private Integer cip;
+	private String assetName;
+	private Integer assetPercentage;
 
 }

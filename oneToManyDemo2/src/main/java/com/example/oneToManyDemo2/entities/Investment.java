@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 @Table
 public class Investment {
-	
+
 	@Id
 	private Integer id;
 	private Double Salary;
