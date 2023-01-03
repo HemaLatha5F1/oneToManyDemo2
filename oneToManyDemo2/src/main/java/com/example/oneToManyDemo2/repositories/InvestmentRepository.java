@@ -13,6 +13,8 @@ public interface InvestmentRepository extends JpaRepository<Investment, Integer>
 	
 	List<Investment> findByCustomerId(Integer id);
 	
-	Optional<Investment> findByIdAndCustomerId(Integer id, Integer cid);
+	Optional<Investment> findByInvestmentIdAndCustomerId(Integer id, Integer cid);
+	
+	Optional<Investment> findByInvestmentIdAndAssertType(Integer id, String assertType);
 
 }

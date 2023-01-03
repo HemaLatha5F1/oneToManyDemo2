@@ -11,6 +11,7 @@ import lombok.Data;
 public class Model {
 	
 	@Id
+	private Integer modelId;
 	private Integer cip;
 	private String assetName;
 	private Integer assetPercentage;

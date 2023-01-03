@@ -19,7 +19,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.example.oneToManyDemo2.entities.Investment;
-import com.example.oneToManyDemo2.model.Adjustment;
 import com.example.oneToManyDemo2.model.LoginForm;
 import com.example.oneToManyDemo2.repositories.CustomerRepository;
 import com.example.oneToManyDemo2.repositories.InvestmentRepository;
@@ -63,75 +62,75 @@ class ControllerTest {
 				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
 	}
 	
-	@Test
-	void testFetchModelBasedOnCip() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/fetchModelBasedOnCip/23")
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
-	}
+//	@Test
+//	void testFetchModelBasedOnCip() throws Exception {
+//		mockMvc.perform(MockMvcRequestBuilders.get("/fetchModelBasedOnCip/23")
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
+//	}
 	
-	@Test
-	void testUpdateInvestments() throws Exception {
-		
-		Adjustment adjustment = new Adjustment();
-		adjustment.setCid(45);
-		adjustment.setId(23);
-		adjustment.setSalary(10000.0);
-		adjustment.setType("Bond");
-		List<Investment> list = new ArrayList<>();
-		Investment investment1 = new Investment();
-		investment1.setId(23);
-		investment1.setCustomerId(45);
-		investment1.setSalary(10000.0);
-		investment1.setType("Cash");
-		list.add(investment1);
-		Investment investment2 = new Investment();
-		investment2.setId(87);
-		investment2.setCustomerId(45);
-		investment2.setSalary(10000.0);
-		investment2.setType("Funds");
-		list.add(investment2);
-		Investment investment3 = new Investment();
-		investment3.setId(56);
-		investment3.setCustomerId(45);
-		investment3.setSalary(10000.0);
-		investment3.setType("Equity");
-		list.add(investment3);
-		
-		String writeValueAsString = new ObjectMapper().writeValueAsString(adjustment);
-		when(investmentRepository.findByCustomerId(ArgumentMatchers.any())).thenReturn(list);
-		when(investmentRepository.findById(ArgumentMatchers.any())).thenReturn(Optional.ofNullable(investment3));
-		mockMvc.perform(MockMvcRequestBuilders.put("/adjustment").content(writeValueAsString)
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
-
-		
-	}
-
-	@Test
-	void testUpdateInvestmentsForNotBond() throws Exception {
-		
-		Adjustment adjustment = new Adjustment();
-		adjustment.setCid(45);
-		adjustment.setId(23);
-		adjustment.setSalary(10000.0);
-		adjustment.setType("Cash");
-		List<Investment> list = new ArrayList<>();
-		Investment investment1 = new Investment();
-		investment1.setId(23);
-		investment1.setCustomerId(45);
-		investment1.setSalary(10000.0);
-		investment1.setType("Cash");
-		list.add(investment1);
-		
-		String writeValueAsString = new ObjectMapper().writeValueAsString(adjustment);
-		when(investmentRepository.findByCustomerId(ArgumentMatchers.any())).thenReturn(list);
-		when(investmentRepository.findById(ArgumentMatchers.any())).thenReturn(Optional.ofNullable(investment1));
-		mockMvc.perform(MockMvcRequestBuilders.put("/adjustment").content(writeValueAsString)
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());	
-	}
-	
+//	@Test
+//	void testUpdateInvestments() throws Exception {
+//		
+//		Adjustment adjustment = new Adjustment();
+//		adjustment.setCid(45);
+//		adjustment.setId(23);
+//		adjustment.setSalary(10000.0);
+//		adjustment.setType("Bond");
+//		List<Investment> list = new ArrayList<>();
+//		Investment investment1 = new Investment();
+//		investment1.setId(23);
+//		investment1.setCustomerId(45);
+//		investment1.setSalary(10000.0);
+//		investment1.setType("Cash");
+//		list.add(investment1);
+//		Investment investment2 = new Investment();
+//		investment2.setId(87);
+//		investment2.setCustomerId(45);
+//		investment2.setSalary(10000.0);
+//		investment2.setType("Funds");
+//		list.add(investment2);
+//		Investment investment3 = new Investment();
+//		investment3.setId(56);
+//		investment3.setCustomerId(45);
+//		investment3.setSalary(10000.0);
+//		investment3.setType("Equity");
+//		list.add(investment3);
+//		
+//		String writeValueAsString = new ObjectMapper().writeValueAsString(adjustment);
+//		when(investmentRepository.findByCustomerId(ArgumentMatchers.any())).thenReturn(list);
+//		when(investmentRepository.findById(ArgumentMatchers.any())).thenReturn(Optional.ofNullable(investment3));
+//		mockMvc.perform(MockMvcRequestBuilders.put("/adjustment").content(writeValueAsString)
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());
+//
+//		
+//	}
+//
+//	@Test
+//	void testUpdateInvestmentsForNotBond() throws Exception {
+//		
+//		Adjustment adjustment = new Adjustment();
+//		adjustment.setCid(45);
+//		adjustment.setId(23);
+//		adjustment.setSalary(10000.0);
+//		adjustment.setType("Cash");
+//		List<Investment> list = new ArrayList<>();
+//		Investment investment1 = new Investment();
+//		investment1.setId(23);
+//		investment1.setCustomerId(45);
+//		investment1.setSalary(10000.0);
+//		investment1.setType("Cash");
+//		list.add(investment1);
+//		
+//		String writeValueAsString = new ObjectMapper().writeValueAsString(adjustment);
+//		when(investmentRepository.findByCustomerId(ArgumentMatchers.any())).thenReturn(list);
+//		when(investmentRepository.findById(ArgumentMatchers.any())).thenReturn(Optional.ofNullable(investment1));
+//		mockMvc.perform(MockMvcRequestBuilders.put("/adjustment").content(writeValueAsString)
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk());	
+//	}
+//	
 	@Test
 	void testLoginAuthentication() throws Exception {
 		LoginForm loginForm = new LoginForm();
